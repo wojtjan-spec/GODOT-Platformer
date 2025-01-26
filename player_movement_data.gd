@@ -7,3 +7,4 @@ extends Resource
 @export var jump_velocity = -275
 @export var gravity_scale = 1.0
 @export var air_ressistance = 200
+@export var air_acceleration = 400
