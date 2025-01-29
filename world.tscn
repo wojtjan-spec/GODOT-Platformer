@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bog162a32pfuj"]
+[gd_scene load_steps=7 format=3 uid="uid://bog162a32pfuj"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_pi430"]
 [ext_resource type="PackedScene" uid="uid://cq7w3gtuewwjg" path="res://player.tscn" id="2_1u55w"]
 [ext_resource type="PackedScene" uid="uid://bk12b130tuuev" path="res://spikes.tscn" id="3_cxn1x"]
+[ext_resource type="PackedScene" uid="uid://d4cxel3cc3s02" path="res://heart.tscn" id="4_lwgyv"]
+[ext_resource type="PackedScene" uid="uid://b0evgyj0qi6cn" path="res://level_completed.tscn" id="5_uddr2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh8o5"]
-size = Vector2(16, 64)
+size = Vector2(16, 57)
 
 [node name="World" type="Node"]
 script = ExtResource("1_pi430")
@@ -29,9 +31,10 @@ collision_mask = 0
 offset_left = -8.0
 offset_top = -32.0
 offset_right = 8.0
-offset_bottom = 32.0
+offset_bottom = 24.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_rh8o5")
 
 [node name="Spikes" parent="." instance=ExtResource("3_cxn1x")]
@@ -45,3 +48,23 @@ position = Vector2(264, 128)
 
 [node name="Spikes3" parent="." instance=ExtResource("3_cxn1x")]
 position = Vector2(280, 128)
+
+[node name="Heart" parent="." instance=ExtResource("4_lwgyv")]
+position = Vector2(120, 96)
+
+[node name="Heart5" parent="." instance=ExtResource("4_lwgyv")]
+position = Vector2(256, -12)
+
+[node name="Heart4" parent="." instance=ExtResource("4_lwgyv")]
+position = Vector2(40, 34)
+
+[node name="Heart2" parent="." instance=ExtResource("4_lwgyv")]
+position = Vector2(281, 56)
+
+[node name="Heart3" parent="." instance=ExtResource("4_lwgyv")]
+position = Vector2(308, -11)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_uddr2")]
+visible = false
