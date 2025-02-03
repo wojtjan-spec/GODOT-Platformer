@@ -82,6 +82,7 @@ collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.0472
 floor_snap_length = 3.0
+safe_margin = 0.14
 script = ExtResource("1_vdf3t")
 movement_data = ExtResource("2_nk3wo")
 
