@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	handle_wall_jump()
 	handle_jump()
-	var input_axis := Input.get_axis("ui_left", "ui_right") # 1 or 0
+	var input_axis := Input.get_axis("move_left", "move_right") # 1 or 0
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
@@ -34,25 +34,25 @@ func handle_jump() -> void:
 	if is_on_floor(): air_jump = true
 	
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("jump"):
 			velocity.y = movement_data.jump_velocity
 	
 	elif not is_on_floor():
-		if Input.is_action_just_released("ui_accept") and velocity.y < movement_data.jump_velocity / 2:
+		if Input.is_action_just_released("jump") and velocity.y < movement_data.jump_velocity / 2:
 			velocity.y = movement_data.jump_velocity / 2
 			
-		if Input.is_action_just_pressed("ui_accept") and air_jump and not just_wall_jumped:
+		if Input.is_action_just_pressed("jump") and air_jump and not just_wall_jumped:
 			velocity.y = movement_data.jump_velocity * 0.8
 			air_jump = false
 
 func handle_wall_jump() ->void:
 	if not is_on_wall_only(): return
 	var wall_normal = get_wall_normal()
-	if Input.is_action_just_pressed("ui_left") and wall_normal == Vector2.LEFT:
+	if Input.is_action_just_pressed("jump") and wall_normal == Vector2.LEFT:
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
 		just_wall_jumped = true
-	if Input.is_action_just_pressed("ui_right") and wall_normal == Vector2.RIGHT:
+	if Input.is_action_just_pressed("jump") and wall_normal == Vector2.RIGHT:
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
 		just_wall_jumped = true
