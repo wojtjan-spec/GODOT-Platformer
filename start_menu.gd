@@ -4,8 +4,8 @@ extends CenterContainer
 @onready var quit_game_button: Button = %QuitGameButton
 
 func _ready():
-	start_game_button.grab_focus()
-	pass
+	RenderingServer.set_default_clear_color("black")
+	start_game_button.grab_focus( )
 
 
 func _on_start_game_button_pressed() -> void:
