@@ -5,13 +5,13 @@ extends Node
 @onready var level_completed: ColorRect = $CanvasLayer/LevelCompleted
 
 func _ready():
-	RenderingServer.set_default_clear_color("black")
 	# Assing viusal polygon to the collision polygon
 	Events.level_completed.connect(show_level_completed)
 	
 func show_level_completed():
 	level_completed.show()
 	get_tree().paused = true
+	await get_tree().create_timer(1.0).timeout
 	if not next_level is PackedScene: return
 	await LevelTransition.fade_to_black()
 	get_tree().paused = false
