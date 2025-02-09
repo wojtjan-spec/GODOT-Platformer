@@ -437,7 +437,7 @@ sources/2 = SubResource("TileSetAtlasSource_c1kgp")
 next_level = ExtResource("2_qqos1")
 
 [node name="Player" parent="." index="0"]
-position = Vector2(48, 109)
+position = Vector2(48, 112)
 
 [node name="Spikes" parent="." index="3" instance=ExtResource("2_ojyog")]
 position = Vector2(128, 160)
