@@ -50,6 +50,7 @@ script = ExtResource("1_pi430")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_uddr2")]
+process_mode = 3
 visible = false
 
 [node name="StartIn" type="ColorRect" parent="CanvasLayer"]
@@ -68,6 +69,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Start in: 3"
 
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_right = 320.0
+offset_bottom = 16.0
+
+[node name="LevelTimeLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+vertical_alignment = 1
+
 [node name="LevelTileMap" parent="." instance=ExtResource("6_suvf5")]
 
 [node name="StartAnimation" type="AnimationPlayer" parent="."]
@@ -75,3 +86,6 @@ process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_yi077")
 }
+
+[connection signal="next_level" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_next_level"]
+[connection signal="retry" from="CanvasLayer/LevelCompleted" to="." method="_on_level_completed_retry"]
