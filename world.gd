@@ -12,10 +12,13 @@ var start_level_msec = 0.0
 @onready var level_time_label: Label = %LevelTimeLabel
 
 func _ready():
+	if not next_level is PackedScene:
+		level_completed.next_level_button.text = "Victory Scene"
+		next_level = load("res://victory_menu.tscn")
 	Events.level_completed.connect(show_level_completed)
 	get_tree().paused = true
 	start_in.visible = true
-	await LevelTransition.fade_from_black()
+	LevelTransition.fade_from_black()
 	start_animation.play("countdown")
 	await start_animation.animation_finished
 	get_tree().paused = false

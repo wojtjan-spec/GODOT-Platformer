@@ -1,5 +1,7 @@
 extends ColorRect
+
 @onready var retry_button: Button = %RetryButton
+@onready var next_level_button: Button = %NextLevelButton
 
 signal retry()
 signal next_level()
