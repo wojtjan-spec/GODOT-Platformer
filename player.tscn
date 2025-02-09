@@ -90,9 +90,7 @@ movement_data = ExtResource("2_nk3wo")
 position = Vector2(-0.5, -11)
 scale = Vector2(1.05556, 1)
 sprite_frames = SubResource("SpriteFrames_6cnvk")
-animation = &"run"
-frame = 4
-frame_progress = 0.676255
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
